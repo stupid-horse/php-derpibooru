@@ -78,55 +78,6 @@ else
     }
 }
 
-function asynccron()
-{
-    if(USEWEBCRON === TRUE){
-      $curlvars = array(
-          'url' => $url);
-
-      $curlvars_string = "";
-
-      foreach($curlvars as $key=>$value) { $curlvars_string .= $key.'='.$value.'&'; }
-      rtrim($curlvars_string, '&');
-
-      //What's the url?
-      $url = URL_TO_CRON;
-
-      // Open the cURL session
-      $ch = curl_init();
-
-      curl_setopt ($ch, CURLOPT_URL, $url);
-
-      curl_setopt ($ch, CURLOPT_POST, 1);                                                                     
-      curl_setopt ($ch, CURLOPT_POSTFIELDS, $curlvars_string);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-        'User-Agent: Client 1.0',
-        'Content-Type: application/x-www-form-urlencoded')                                                                       
-      );
-      curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-      curl_setopt($ch, CURLOPT_TIMEOUT_MS, 3000);
-      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-
-      $wub = curl_exec($ch);
-
-      //get Curl info
-      $info = curl_getinfo($ch);
-
-      // Check that a connection was made
-      if (curl_error($ch)){
-              // If it wasn't...
-      }
-
-      curl_close ($ch);
-  } else {
-// This setup will try to call cronrun.php in a background shell. Keeping it from tying up Apache.
-    $command = 'php zcheckdb.php';
-    launchBackgroundProcess($command);
-  }
-}
-
-
 function update_query($dvar, $add_dvar, $remove_dvar, $change_dvar){
   $sub_sql = '';
   foreach($dvar as $k => $v){

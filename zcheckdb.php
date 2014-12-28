@@ -54,7 +54,7 @@ for ($i = 0; $i < count($arr); ++$i) {
 		$ch = curl_init();
 		curl_setopt ($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-			'User-Agent: Crond 1.0')
+			'User-Agent: AnonTheCuck Archiver 1.0')
 		);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_TIMEOUT,30);
