@@ -8,7 +8,12 @@ This is a collection of various PHP tools to assist you in archiving derpibooru.
 
 Usage
 --------
-- Coming soon.
+- 
+    $ php zautoadd.php
+    This file takes no arguments and will query the database for the largest image ID, then polls Derpibooru for the newest image id. It will then download everything in between.
+    
+    
+
 
 Installing
 ----------
