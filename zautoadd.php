@@ -44,7 +44,7 @@ if($httpCode != 200 || $rawjson == ' ' || $rawjson == '') {
 } else 
 {
 	$array = json_decode($rawjson, true);
-	$highestderp = $array[0]['id_number'];
+	$highestderp = $array['images'][0]['id_number'];
 }
 
 if($highestsql != $highestderp)
